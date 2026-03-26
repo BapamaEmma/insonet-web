@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Services – Insonet Systems</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="navbar" id="navbar">
+      <div class="container navbar-inner">
+        <a href="index.html" class="logo">
+          <img
+            src="images/logo/insonet.png"
+            alt="Insonet Systems"
+            class="logo-img"
+          />
+        </a>
+        <nav class="nav-links desktop-nav">
+          <a href="index.html#hero">Home</a>
+          <a href="index.html#about">About</a>
+          <div class="nav-item dropdown">
+            <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">Services ▾</button>
+            <ul class="dropdown-menu" role="menu">
+              <li role="none"><a role="menuitem" href="cctv.html">CCTV Surveillance</a></li>
+              <li role="none"><a role="menuitem" href="network.html">Network Infrastructure</a></li>
+              <li role="none"><a role="menuitem" href="access.html">Access Control</a></li>
+              <li role="none"><a role="menuitem" href="cyber.html">Cybersecurity</a></li>
+              <li role="none"><a role="menuitem" href="fencing.html">Perimeter Fencing</a></li>
+              <li role="none"><a role="menuitem" href="hardware.html">Security Hardware</a></li>
+            </ul>
+          </div>
+          <a href="projects.html">Projects</a>
+          <a href="contact.html">Contact</a>
+          <a href="services.html#quote-form" class="btn btn-primary nav-quote">Get Quote</a>
+        <!-- Mobile Navigation Footer (Working Hours & Socials) -->
+        <div class="mobile-nav-info">
+          <div class="contact-info">
+            <p><strong>Hours:</strong> Mon – Fri, 8:00 – 17:00</p>
+            <p><strong>Phone:</strong> +233 595371294</p>
+          </div>
+          <div class="social-links-mobile">
+            <a href="https://wa.me/+233 24 398 4880" class="social-icon" aria-label="WhatsApp"><img src="images/socials-icons/Whattapp.png" alt="WhatsApp" /></a>
+            <a href="https://www.facebook.com/" class="social-icon" aria-label="Facebook"><img src="images/socials-icons/facebook.png" alt="Facebook" /></a>
+            <a href="https://www.instagram.com/" class="social-icon" aria-label="Instagram"><img src="images/socials-icons/instagram.png" alt="Instagram" /></a>
+          </div>
+        </div>
+        </nav>
+        <button class="nav-toggle" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-header">
+        <div class="container page-header-inner animate__slideInLeft">
+          <div class="breadcrumbs">
+            <a href="index.html">Home</a> / <span>Services</span>
+          </div>
+          <h1>Security & Network Services Built for Uptime</h1>
+          <p>
+            A complete stack of CCTV, access control, and network solutions
+            designed for secure, always‑on operations.
+          </p>
+          <div class="tag-row">
+            <span class="tag">CCTV</span>
+            <span class="tag">Network Infrastructure</span>
+            <span class="tag">Access Control</span>
+            <span class="tag">Cybersecurity</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- removed duplicate service hero to streamline page layout -->
+
+      
+
+      <section class="quote-form-section" id="quote-form">
+        <div class="container quote-form-inner">
+          <header class="section-header left">
+            <p class="eyebrow">Request Quote</p>
+            <h2>Tell Us About Your Project</h2>
+          </header>
+          <div class="form-card">
+            <form id="quote-request-form">
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="q-fullName">Full Name</label>
+                  <input
+                    type="text"
+                    id="q-fullName"
+                    name="fullName"
+                    placeholder="Enter your name"
+                  />
+                </div>
+                <div class="form-field">
+                  <label for="q-company">Company</label>
+                  <input
+                    type="text"
+                    id="q-company"
+                    name="company"
+                    placeholder="Company name"
+                  />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="q-email">Email</label>
+                  <input
+                    type="email"
+                    id="q-email"
+                    name="email"
+                    placeholder="you@example.com"
+                  />
+                </div>
+                <div class="form-field">
+                  <label for="q-phone">Phone</label>
+                  <input
+                    type="tel"
+                    id="q-phone"
+                    name="phone"
+                    placeholder="+233 595371294"
+                  />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="q-serviceType">Service Type</label>
+                  <select id="q-serviceType" name="serviceType">
+                    <option value="">Select a service</option>
+                    <option value="cctv">CCTV Surveillance</option>
+                    <option value="network">Network Infrastructure</option>
+                    <option value="access">Access Control</option>
+                    <option value="cyber">Cybersecurity</option>
+                    <option value="combined">Combined Solution</option>
+                  </select>
+                </div>
+                <div class="form-field">
+                  <label for="q-timeline">Timeline</label>
+                  <input
+                    type="text"
+                    id="q-timeline"
+                    name="timeline"
+                    placeholder="e.g. Q2–Q3, ASAP"
+                  />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-field full-width">
+                  <label for="q-message">Project Details</label>
+                  <textarea
+                    id="q-message"
+                    name="message"
+                    rows="4"
+                    placeholder="Locations, number of users, existing systems, goals…"
+                  ></textarea>
+                </div>
+              </div>
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Submit Request</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-grid">
+        <div class="footer-column">
+          <div class="logo">
+            <img
+              src="images/logo/insonet.png"
+              alt="Insonet Systems"
+              class="logo-img"
+            />
+          </div>
+          <p>
+            Integrated security and networking solutions for businesses that
+            can’t afford downtime or blind spots.
+          </p>
+        </div>
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html#hero">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Services</h3>
+          <ul>
+            <li><a href="#cctv">CCTV Surveillance</a></li>
+            <li><a href="#network">Network Infrastructure</a></li>
+            <li><a href="#access">Access Control</a></li>
+            <li><a href="#cyber">Cybersecurity</a></li>
+          </ul>
+        </div>
+          <div class="footer-column">
+          <h3>Contact</h3>
+          <ul>
+            <li>info@insonetsystems.com</li>
+            <li>+233 595371294</li>
+            <li>Accra,Spintex</li>
+          </ul>
+          <div class="social-links">
+            <a href="https://wa.me/233595371294" class="social-icon" aria-label="Chat on WhatsApp" title="WhatsApp">
+              <img src="images/socials-icons/Whattapp.png" alt="WhatsApp" />
+            </a>
+            <a href="https://www.facebook.com/" class="social-icon" aria-label="Insonet Systems on Facebook" title="Facebook">
+              <img src="images/socials-icons/facebook.png" alt="Facebook" />
+            </a>
+            <a href="https://www.instagram.com/" class="social-icon" aria-label="Insonet Systems on Instagram" title="Instagram">
+              <img src="images/socials-icons/instagram.png" alt="Instagram" />
+            </a>
+          </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="container footer-bottom-inner">
+          <p>© <span id="year"></span> Insonet Systems. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <div class="modal-backdrop" id="success-modal" aria-hidden="true">
+      <div class="modal">
+        <h2>Request Sent</h2>
+        <p>Your project details have been received. We’ll follow up shortly.</p>
+        <button class="btn btn-primary" data-close-modal>Close</button>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+  </html>
+

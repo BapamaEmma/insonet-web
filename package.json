@@ -1,0 +1,21 @@
+{
+  "name": "insonet-systems-website",
+  "version": "1.0.0",
+  "description": "Static marketing website for Insonet Systems – security and networking solutions.",
+  "scripts": {
+    "start": "npx serve .",
+    "lint": "echo \"No lint step configured for static site\""
+  },
+  "keywords": [
+    "insonet",
+    "security",
+    "networking",
+    "cctv",
+    "marketing-site"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {}
+}
+
