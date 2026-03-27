@@ -159,7 +159,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // include project images so they get `.in-view` when scrolled into view
   // include hero image so it fades in when scrolled into view
   const animTargets = document.querySelectorAll(
-    ".tracking-in-expand-fwd, .animate__zoomIn, .animate__fadeIn, .animate__slideInLeft, .project-image, .hero-image",
+".tracking-in-expand-fwd, .animate__zoomIn, .animate__fadeIn, .animate__slideInLeft, .project-image, .hero-image, .testimonial-card"
   );
 
   if (animTargets.length) {
