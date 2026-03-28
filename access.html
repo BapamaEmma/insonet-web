@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Access Control Systems – Insonet Systems</title>
+  <link rel="icon" href="images/logo/insonet.png" type="image/png">
   <link rel="stylesheet" href="styles.css" />
 </head>
 
@@ -108,11 +109,14 @@
           <h2>Tell Us About Your Project</h2>
         </header>
         <div class="form-card">
-          <form id="quote-request-form">
+          <form id="quote-request-form" novalidate>
+            <div class="honeypot-field">
+              <input type="text" name="bot-field" class="honeypot" tabindex="-1" autocomplete="off" />
+            </div>
             <div class="form-row">
               <div class="form-field">
                 <label for="q-fullName">Full Name</label>
-                <input type="text" id="q-fullName" name="fullName" placeholder="Enter your name" />
+                <input type="text" id="q-fullName" name="fullName" required minlength="2" placeholder="Enter your name" />
               </div>
               <div class="form-field">
                 <label for="q-company">Company</label>
@@ -136,10 +140,11 @@
                   placeholder="Locations, number of users, existing systems, goals…"></textarea>
               </div>
             </div>
-            <div class="form-actions">
-              <button type="submit" class="btn btn-primary">Submit Request</button>
-            </div>
-          </form>
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Submit Request</button>
+              </div>
+              <div id="form-errors" class="error-container" aria-live="polite" aria-atomic="true" role="status"></div>
+            </form>
         </div>
       </div>
     </section>

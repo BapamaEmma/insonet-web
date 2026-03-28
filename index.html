@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Insonet Systems – Smart Security & Networking</title>
+  <link rel="icon" href="images/logo/insonet.png" type="image/png">
   <link rel="stylesheet" href="styles.css" />
 </head>
 
@@ -38,7 +39,7 @@
             <p><strong>Phone:</strong> +233 24 398 4880</p>
           </div>
           <div class="social-links-mobile">
-            <a href="https://wa.me/233595371294" class="social-icon" aria-label="WhatsApp"><img src="images/socials-icons/Whattapp.png" alt="WhatsApp" /></a>
+            <a href="https://wa.me/+233 24 398 4880" class="social-icon" aria-label="WhatsApp"><img src="images/socials-icons/Whattapp.png" alt="WhatsApp" /></a>
             <a href="https://www.facebook.com/" class="social-icon" aria-label="Facebook"><img src="images/socials-icons/facebook.png" alt="Facebook" /></a>
             <a href="https://www.instagram.com/" class="social-icon" aria-label="Instagram"><img src="images/socials-icons/instagram.png" alt="Instagram" /></a>
           </div>
@@ -49,6 +50,7 @@
         <span></span>
         <span></span>
       </button>
+      <div class="nav-overlay"></div>
     </div>
   </header>
 
@@ -57,10 +59,10 @@
     <section class="hero" id="hero">
       <div class="container hero-grid">
         <div class="hero-content fade-in-up">
-          <p class="eyebrow">Smart Security & <span class="eyebrow-highlight">Networking</span></p>
+          <p class="eyebrow"><span class="eyebrow-highlight">INTELLIGENCE SOLUTIONS</span> NETWORK SYSTEMS</p>
           <h1 class="tracking-in-expand-fwd">Secure, Connected & Intelligent Infrastructure for Modern Businesses</h1>
           <p class="hero-text animate__fadeIn">
-            Insonet Systems designs and deploys CCTV, access control, and network
+            INSONET Systems designs and deploys CCTV, access control, and network
             solutions that keep your people, data, and spaces protected.
           </p>
           <div class="hero-actions">
@@ -261,7 +263,7 @@
         <a href="services.html" class="btn btn-primary">Request a Project Quote</a>
         <div class="cta-socials" style="display:flex;justify-content:center;margin-top:12px;">
           <div class="social-links" style="display:flex;gap:14px;align-items:center;">
-            <a href="https://wa.me/233595371294" class="social-icon" aria-label="Chat on WhatsApp" title="WhatsApp">
+            <a href="https://wa.me/+233 24 398 4880" class="social-icon" aria-label="Chat on WhatsApp" title="WhatsApp">
               <img src="images/socials-icons/Whattapp.png" alt="WhatsApp" style="width:36px;height:36px;" />
             </a>
             <a href="https://www.facebook.com/" class="social-icon" aria-label="Insonet Systems on Facebook"
@@ -297,11 +299,14 @@
         </div>
 
         <div class="form-card">
-          <form id="contact-form">
+<form id="contact-form">
+            <div class="honeypot-field">
+              <input type="text" name="bot-field" class="honeypot" tabindex="-1" autocomplete="off" />
+            </div>
             <div class="form-row">
               <div class="form-field">
                 <label for="fullName">Full Name</label>
-                <input type="text" id="fullName" name="fullName" placeholder="Enter your name" />
+                <input type="text" id="fullName" name="fullName" data-required="true" placeholder="Enter your name" />
               </div>
               <div class="form-field">
                 <label for="company">Company</label>
@@ -311,17 +316,17 @@
             <div class="form-row">
               <div class="form-field">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="you@example.com" />
+                <input type="email" id="email" name="email" data-required="true" placeholder="you@example.com" />
               </div>
               <div class="form-field">
                 <label for="phone">Phone</label>
-                <input type="tel" id="phone" name="phone" placeholder="+233 24 398 4880" />
+                <input type="tel" id="phone" name="phone" placeholder="+233 0000 00000" />
               </div>
             </div>
             <div class="form-row">
               <div class="form-field full-width">
                 <label for="serviceType">Service Type</label>
-                <select id="serviceType" name="serviceType">
+                <select id="serviceType" name="serviceType" data-required="true">
                   <option value="">Select a service</option>
                   <option value="cctv">CCTV Surveillance</option>
                   <option value="network">Network Infrastructure</option>
@@ -334,12 +339,13 @@
             <div class="form-row">
               <div class="form-field full-width">
                 <label for="message">Project Details</label>
-                <textarea id="message" name="message" rows="4" placeholder="Describe your project"></textarea>
+                <textarea id="message" name="message" rows="4" data-required="true" placeholder="Describe your project"></textarea>
               </div>
             </div>
             <div class="form-actions">
               <button type="submit" class="btn btn-primary">Submit</button>
             </div>
+            <div id="form-errors" class="error-container" aria-live="polite" aria-atomic="true" role="status"></div>
           </form>
         </div>
       </div>
@@ -384,7 +390,7 @@
           <li>Accra, Spintex</li>
         </ul>
         <div class="social-links">
-          <a href="https://wa.me/233595371294" class="social-icon" aria-label="Chat on WhatsApp" title="WhatsApp">
+          <a href="https://wa.me/+233 24 398 4880" class="social-icon" aria-label="Chat on WhatsApp" title="WhatsApp">
             <img src="images/socials-icons/Whattapp.png" alt="WhatsApp" />
           </a>
           <a href="https://www.facebook.com/" class="social-icon" aria-label="Insonet Systems on Facebook"

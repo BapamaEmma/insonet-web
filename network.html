@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Network Infrastructure – Insonet Systems</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Network Infrastructure – Insonet Systems</title>
+  <link rel="icon" href="images/logo/insonet.png" type="image/png">
+  <link rel="stylesheet" href="styles.css" />
+</head>
   <body>
     <header class="navbar" id="navbar">
       <div class="container navbar-inner">
@@ -103,11 +104,14 @@
             <h2>Tell Us About Your Project</h2>
           </header>
           <div class="form-card">
-            <form id="quote-request-form">
-              <div class="form-row">
-                <div class="form-field">
-                  <label for="q-fullName">Full Name</label>
-                  <input type="text" id="q-fullName" name="fullName" placeholder="Enter your name" />
+<form id="quote-request-form">
+            <div class="honeypot-field">
+              <input type="text" name="bot-field" class="honeypot" tabindex="-1" autocomplete="off" />
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="q-fullName">Full Name</label>
+                <input type="text" id="q-fullName" name="fullName" data-required="true" placeholder="Enter your name" />
                 </div>
                 <div class="form-field">
                   <label for="q-company">Company</label>
@@ -127,13 +131,14 @@
               <div class="form-row">
                 <div class="form-field full-width">
                   <label for="q-message">Project Details</label>
-                  <textarea id="q-message" name="message" rows="4" placeholder="Locations, number of users, existing systems, goals…"></textarea>
+                  <textarea id="q-message" name="message" data-required="true" rows="4" placeholder="Locations, number of users, existing systems, goals…"></textarea>
                 </div>
               </div>
-              <div class="form-actions">
-                <button type="submit" class="btn btn-primary">Submit Request</button>
-              </div>
-            </form>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">Submit Request</button>
+            </div>
+            <div id="form-errors" class="error-container" aria-live="polite" aria-atomic="true" role="status"></div>
+          </form>
           </div>
         </div>
       </section>
