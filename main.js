@@ -49,8 +49,60 @@ document.addEventListener("DOMContentLoaded", () => {
   if (navToggle && desktopNav) {
     navToggle.addEventListener("click", () => {
       const opened = desktopNav.classList.toggle("mobile-open");
-      if (!opened) {
+      const navOverlay = document.querySelector('.nav-overlay');
+      if (opened) {
+        navOverlay.style.opacity = '1';
+        navOverlay.style.pointerEvents = 'auto';
+      } else {
+        navOverlay.style.opacity = '0';
+        navOverlay.style.pointerEvents = 'none';
         // closing mobile menu: ensure dropdowns are closed
+        document.querySelectorAll(".nav-item.dropdown.open").forEach((n) => {
+          n.classList.remove("open");
+          const b = n.querySelector(".dropdown-toggle");
+          if (b) b.setAttribute("aria-expanded", "false");
+        });
+      }
+    });
+
+    // Close X click
+    document.querySelectorAll('.close-x').forEach(closeBtn => {
+      closeBtn.addEventListener('click', () => {
+        desktopNav.classList.remove('mobile-open');
+        const navOverlay = document.querySelector('.nav-overlay');
+        if (navOverlay) {
+          navOverlay.style.opacity = '0';
+          navOverlay.style.pointerEvents = 'none';
+        }
+        document.querySelectorAll(".nav-item.dropdown.open").forEach((n) => {
+          n.classList.remove("open");
+          const b = n.querySelector(".dropdown-toggle");
+          if (b) b.setAttribute("aria-expanded", "false");
+        });
+      });
+    });
+
+    // Overlay close
+    const navOverlay = document.querySelector('.nav-overlay');
+    if (navOverlay) {
+      navOverlay.addEventListener('click', () => {
+        desktopNav.classList.remove('mobile-open');
+        navOverlay.style.opacity = '0';
+        navOverlay.style.pointerEvents = 'none';
+        document.querySelectorAll(".nav-item.dropdown.open").forEach((n) => {
+          n.classList.remove("open");
+          const b = n.querySelector(".dropdown-toggle");
+          if (b) b.setAttribute("aria-expanded", "false");
+        });
+      });
+    }
+    
+
+    
+    // Close on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && desktopNav.classList.contains('mobile-open')) {
+        desktopNav.classList.remove('mobile-open');
         document.querySelectorAll(".nav-item.dropdown.open").forEach((n) => {
           n.classList.remove("open");
           const b = n.querySelector(".dropdown-toggle");
@@ -72,62 +124,198 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-    const form = event.target;
 
-    // Web3Forms configuration - Free email forwarding service
-    // Get your key at: https://web3forms.com
-    const accessKey = "16874b53-6f89-4579-be42-91d7b8f8dbf5";
+const validateField = (field) => {
+  const value = field.value.trim();
+  const form = field.closest('form');
+  let isValid = true;
+  let errorMsg = '';
 
-    const formData = new FormData(form);
-    formData.append("access_key", accessKey);
-    formData.append("subject", "New Website Contact/Quote Request");
+  // Skip if no data-required (optional, skip validation)
+  if (!field.hasAttribute('data-required') && value === '') {
+    return true;
+  }
 
-    const submitBtn = form.querySelector('button[type="submit"]');
-    const originalText = submitBtn ? submitBtn.textContent : "Submit";
-    if (submitBtn) {
-      submitBtn.textContent = "Sending...";
-      submitBtn.disabled = true;
+  if (field.hasAttribute('data-required') && value === '') {
+    errorMsg = 'This field is required';
+    isValid = false;
+  } else if (field.name === 'fullName' || field.id === 'q-fullName') {
+    if (value.length < 2 || value.length > 50 || !/^[a-zA-Z0-9\s\-\.\']{2,50}$/.test(value)) {
+      errorMsg = 'Name must be 2-50 characters (letters, spaces, -, \', .)';
+      isValid = false;
     }
+  } else if (field.name === 'email' || field.id === 'q-email') {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(value)) {
+      errorMsg = 'Please enter a valid email address';
+      isValid = false;
+    }
+  } else if (field.name === 'message' || field.id === 'q-message') {
+    if (value.length < 10) {
+      errorMsg = 'Please provide at least 10 characters';
+      isValid = false;
+    }
+  } else if (field.tagName === 'SELECT') {
+    if (value === '') {
+      errorMsg = 'Please select an option';
+      isValid = false;
+    }
+  } else if (field.name === 'phone') {
+    // Optional, always pass
+    isValid = true;
+  }
 
-    try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body: formData,
+  setFieldState(field, isValid, errorMsg);
+  return isValid;
+};
+
+const setFieldState = (field, isValid, errorMsg) => {
+  const form = field.closest('form');
+  field.classList.toggle('error', !isValid);
+  field.classList.toggle('valid', isValid);
+  field.setAttribute('aria-invalid', (!isValid).toString());
+  field.title = errorMsg || '';
+
+  // Add error message span if needed
+  let errorSpan = field.parentNode.querySelector('.error-message');
+  if (!isValid && errorMsg && !errorSpan) {
+    errorSpan = document.createElement('span');
+    errorSpan.className = 'error-message';
+    errorSpan.id = `error-${field.id || field.name}`;
+    errorSpan.textContent = errorMsg;
+    field.parentNode.appendChild(errorSpan);
+    field.setAttribute('aria-describedby', errorSpan.id);
+  } else if (isValid && errorSpan) {
+    errorSpan.remove();
+    field.removeAttribute('aria-describedby');
+  } else if (errorSpan) {
+    errorSpan.textContent = errorMsg;
+  }
+
+  // Update live region
+  updateErrors(form);
+};
+
+const updateErrors = (form) => {
+  const errorContainer = form.querySelector('.error-container');
+  const invalidFields = form.querySelectorAll('[aria-invalid="true"]');
+  if (errorContainer) {
+    if (invalidFields.length === 0) {
+      errorContainer.textContent = 'All good!';
+      errorContainer.className = 'error-container valid-container';
+    } else {
+      errorContainer.textContent = `${invalidFields.length} field(s) need attention.`;
+      errorContainer.className = 'error-container';
+    }
+  }
+};
+
+const isFormValid = (form) => {
+  let valid = true;
+  const requiredFields = form.querySelectorAll('[data-required]');
+  requiredFields.forEach(field => {
+    if (!validateField(field)) valid = false;
+  });
+  // Validate all fields for better UX
+  const allFields = form.querySelectorAll('input, select, textarea');
+  allFields.forEach(field => validateField(field));
+  return valid;
+};
+
+const handleFormSubmit = async (event) => {
+  event.preventDefault();
+  const form = event.target;
+
+  if (!isFormValid(form)) {
+    form.classList.add('shake');
+    setTimeout(() => form.classList.remove('shake'), 500);
+    
+    // Focus first invalid field
+    const firstInvalid = form.querySelector('[aria-invalid="true"]');
+    if (firstInvalid) {
+      firstInvalid.focus();
+      firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    return;
+  }
+
+  // Web3Forms configuration - Free email forwarding service
+  // Get your key at: https://web3forms.com
+  const accessKey = "16874b53-6f89-4579-be42-91d7b8f8dbf5";
+
+  const formData = new FormData(form);
+  formData.append("access_key", accessKey);
+  formData.append("subject", "New Website Contact/Quote Request from " + document.title);
+
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const originalText = submitBtn ? submitBtn.textContent : "Submit";
+  if (submitBtn) {
+    submitBtn.textContent = "Sending...";
+    submitBtn.disabled = true;
+  }
+
+  try {
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData,
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      if (successModal) {
+        successModal.classList.add("visible");
+        successModal.setAttribute("aria-hidden", "false");
+      }
+      form.reset();
+      // Clear all states
+      form.querySelectorAll('input, select, textarea').forEach(field => {
+        field.classList.remove('error', 'valid');
+        field.removeAttribute('aria-invalid');
+        field.removeAttribute('title');
+        field.removeAttribute('aria-describedby');
+        const errorMsg = field.parentNode.querySelector('.error-message');
+        if (errorMsg) errorMsg.remove();
       });
-
-      const data = await response.json();
-
-      if (data.success) {
-        if (successModal) {
-          successModal.classList.add("visible");
-          successModal.setAttribute("aria-hidden", "false");
-        }
-        form.reset();
-      } else {
-        alert("Something went wrong submitting the form: " + data.message);
-      }
-    } catch (error) {
-      console.error("Form submit error", error);
-      alert(
-        "Something went wrong. Please check your connection and try again.",
-      );
-    } finally {
-      if (submitBtn) {
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
-      }
+      updateErrors(form);
+    } else {
+      alert("Submission failed: " + (data.message || 'Unknown error'));
     }
-  };
-
-  if (contactForm && successModal) {
-    contactForm.addEventListener("submit", handleFormSubmit);
+  } catch (error) {
+    console.error("Form submit error", error);
+    alert("Network error. Please check your connection and try again.");
+  } finally {
+    if (submitBtn) {
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+    }
   }
+};
 
-  if (quoteForm && successModal) {
-    quoteForm.addEventListener("submit", handleFormSubmit);
-  }
+  // Real-time validation for all forms
+  const forms = document.querySelectorAll('form[id]');
+  forms.forEach(form => {
+    // Ensure error container exists
+    if (!form.querySelector('.error-container')) {
+      const errorDiv = document.createElement('div');
+      errorDiv.id = 'form-errors';
+      errorDiv.className = 'error-container';
+      errorDiv.setAttribute('aria-live', 'polite');
+      errorDiv.setAttribute('aria-atomic', 'true');
+      errorDiv.setAttribute('role', 'status');
+      form.appendChild(errorDiv);
+    }
+    
+    const fields = form.querySelectorAll('input, select, textarea');
+    fields.forEach(field => {
+      field.addEventListener('blur', () => validateField(field));
+      field.addEventListener('input', () => validateField(field));
+    });
+    form.addEventListener('submit', handleFormSubmit);
+    
+    // Initial validation on load
+    fields.forEach(field => validateField(field));
+  });
 
   const filterTabs = document.querySelectorAll("[data-filter]");
   const projectCards = document.querySelectorAll("[data-category]");
