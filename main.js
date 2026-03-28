@@ -128,59 +128,41 @@ document.addEventListener("DOMContentLoaded", () => {
 const validateField = (field) => {
   const value = field.value.trim();
   const form = field.closest('form');
-  const errorContainer = form.querySelector('.error-container');
   let isValid = true;
   let errorMsg = '';
 
-  // Skip optional fields (no data-required)
-  if (!field.hasAttribute('data-required')) {
-    if (value === '') {
-      // Empty optional is valid
-      setFieldState(field, true, '');
-    } else {
-      // Validate filled optional fields (except phone)
-      if (field.name === 'phone') {
-        setFieldState(field, true, '');
-        return true;
-      }
-      // For company etc., basic length if filled
-      if (value.length < 2 || value.length > 100) {
-        errorMsg = 'Must be 2-100 characters';
-        isValid = false;
-      } else {
-        setFieldState(field, true, '');
-        return true;
-      }
-    }
+  // Skip if no data-required (optional, skip validation)
+  if (!field.hasAttribute('data-required') && value === '') {
+    return true;
   }
 
-  // Required fields
-  if (field.hasAttribute('data-required')) {
-    if (value === '') {
-      errorMsg = 'This field is required';
+  if (field.hasAttribute('data-required') && value === '') {
+    errorMsg = 'This field is required';
+    isValid = false;
+  } else if (field.name === 'fullName' || field.id === 'q-fullName') {
+    if (value.length < 2 || value.length > 50 || !/^[a-zA-Z0-9\s\-\.\']{2,50}$/.test(value)) {
+      errorMsg = 'Name must be 2-50 characters (letters, spaces, -, \', .)';
       isValid = false;
-    } else if (field.name === 'fullName' || field.id === 'q-fullName') {
-      if (value.length < 2 || value.length > 50 || !/^[a-zA-Z0-9\s\-\.\']{2,50}$/.test(value)) {
-        errorMsg = 'Name must be 2-50 characters )';
-        isValid = false;
-      }
-    } else if (field.name === 'email' || field.id === 'q-email') {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(value)) {
-        errorMsg = 'Please enter a valid email address';
-        isValid = false;
-      }
-    } else if (field.name === 'message' || field.id === 'q-message') {
-      if (value.length < 10) {
-        errorMsg = 'Please provide at least 10 characters';
-        isValid = false;
-      }
-    } else if (field.matches('select')) {
-      if (value === '') {
-        errorMsg = 'Please select an option';
-        isValid = false;
-      }
     }
+  } else if (field.name === 'email' || field.id === 'q-email') {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(value)) {
+      errorMsg = 'Please enter a valid email address';
+      isValid = false;
+    }
+  } else if (field.name === 'message' || field.id === 'q-message') {
+    if (value.length < 10) {
+      errorMsg = 'Please provide at least 10 characters';
+      isValid = false;
+    }
+  } else if (field.tagName === 'SELECT') {
+    if (value === '') {
+      errorMsg = 'Please select an option';
+      isValid = false;
+    }
+  } else if (field.name === 'phone') {
+    // Optional, always pass
+    isValid = true;
   }
 
   setFieldState(field, isValid, errorMsg);
