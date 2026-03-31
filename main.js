@@ -312,9 +312,6 @@ const handleFormSubmit = async (event) => {
       field.addEventListener('input', () => validateField(field));
     });
     form.addEventListener('submit', handleFormSubmit);
-    
-    // Initial validation on load
-    fields.forEach(field => validateField(field));
   });
 
   const filterTabs = document.querySelectorAll("[data-filter]");

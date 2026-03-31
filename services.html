@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Services – Insonet Systems</title>
+  <title>Services – INSONET Systems</title>
   <link rel="icon" href="images/logo/insonet.png" type="image/png">
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -13,11 +13,17 @@
         <a href="index.html" class="logo">
           <img
             src="images/logo/insonet.png"
-            alt="Insonet Systems"
+            alt="INSONET Systems"
             class="logo-img"
           />
         </a>
-        <nav class="nav-links desktop-nav">
+      <div class="mobile-sub-nav">
+        <a href="index.html#hero">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <nav class="nav-links desktop-nav">
+        <button class="close-x" aria-label="Close menu"></button>
           <a href="index.html#hero">Home</a>
           <a href="index.html#testimonials">Testimonials</a>
           <div class="nav-item dropdown">
@@ -38,12 +44,12 @@
         <div class="mobile-nav-info">
           <div class="contact-info">
             <p><strong>Hours:</strong> Mon – Fri, 8:00 – 17:00</p>
-            <p><strong>Phone:</strong> +233 24 398 4880</p>
+            <p><strong>Phone:</strong> +233 2628 42 077</p>
           </div>
           <div class="social-links-mobile">
-            <a href="https://wa.me/+233 24 398 4880" class="social-icon" aria-label="WhatsApp"><img src="images/socials-icons/Whattapp.png" alt="WhatsApp" /></a>
-            <a href="https://www.facebook.com/" class="social-icon" aria-label="Facebook"><img src="images/socials-icons/facebook.png" alt="Facebook" /></a>
-            <a href="https://www.instagram.com/" class="social-icon" aria-label="Instagram"><img src="images/socials-icons/instagram.png" alt="Instagram" /></a>
+            <a href="https://wa.me/233262842077" class="social-icon" aria-label="WhatsApp"><img src="images/socials-icons/Whattapp.png" alt="WhatsApp" /></a>
+            <a href="https://www.facebook.com/Admininso" class="social-icon" aria-label="Facebook"><img src="images/socials-icons/facebook.png" alt="Facebook" /></a>
+            <a href="https://www.instagram.com/insonetgh/" class="social-icon" aria-label="Instagram"><img src="images/socials-icons/instagram.png" alt="Instagram" /></a>
           </div>
         </div>
         </nav>
@@ -52,7 +58,8 @@
           <span></span>
           <span></span>
         </button>
-      </div>
+                  <div class="nav-overlay"></div>
+    </div>
     </header>
 
     <main>
@@ -118,6 +125,7 @@
                     type="email"
                     id="q-email"
                     name="email"
+                    data-required="true"
                     placeholder="you@example.com"
                   />
                 </div>
@@ -127,14 +135,14 @@
                     type="tel"
                     id="q-phone"
                     name="phone"
-                    placeholder="+233 24 398 4880"
+                    placeholder="+233 2628 42 077"
                   />
                 </div>
               </div>
               <div class="form-row">
                 <div class="form-field">
                   <label for="q-serviceType">Service Type</label>
-                  <select id="q-serviceType" name="serviceType">
+                  <select id="q-serviceType" name="serviceType" data-required="true">
                     <option value="">Select a service</option>
                     <option value="cctv">CCTV Surveillance</option>
                     <option value="network">Network Infrastructure</option>
@@ -181,7 +189,7 @@
           <div class="logo">
             <img
               src="images/logo/insonet.png"
-              alt="Insonet Systems"
+              alt="INSONET Systems"
               class="logo-img"
             />
           </div>
@@ -213,17 +221,17 @@
           <h3>Contact</h3>
           <ul>
             <li>info@insonetsystems.com</li>
-            <li>+233 24 398 4880</li>
+            <li>+233 2628 42 077</li>
             <li>Accra,Spintex</li>
           </ul>
           <div class="social-links">
-            <a href="https://wa.me/+233 24 398 4880" class="social-icon" aria-label="Chat on WhatsApp" title="WhatsApp">
+            <a href="https://wa.me/233262842077" class="social-icon" aria-label="Chat on WhatsApp" title="WhatsApp">
               <img src="images/socials-icons/Whattapp.png" alt="WhatsApp" />
             </a>
-            <a href="https://www.facebook.com/" class="social-icon" aria-label="Insonet Systems on Facebook" title="Facebook">
+            <a href="https://www.facebook.com/Admininso" class="social-icon" aria-label="INSONET Systems on Facebook" title="Facebook">
               <img src="images/socials-icons/facebook.png" alt="Facebook" />
             </a>
-            <a href="https://www.instagram.com/" class="social-icon" aria-label="Insonet Systems on Instagram" title="Instagram">
+            <a href="https://www.instagram.com/insonetgh/" class="social-icon" aria-label="INSONET Systems on Instagram" title="Instagram">
               <img src="images/socials-icons/instagram.png" alt="Instagram" />
             </a>
           </div>
@@ -232,7 +240,7 @@
       </div>
       <div class="footer-bottom">
         <div class="container footer-bottom-inner">
-          <p>© <span id="year"></span> Insonet Systems. All rights reserved.</p>
+          <p>© <span id="year"></span> INSONET Systems. All rights reserved.</p>
         </div>
       </div>
     </footer>
@@ -245,5 +253,9 @@
       </div>
     </div>
 
-   <script src="main.js"></script>    <!--Start of Tawk.to Script--><script type=\"text/javascript\">\nvar Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();\n(function(){\nvar s1=document.createElement(\"script\"),s0=document.getElementsByTagName(\"script\")[0];\ns1.async=true;\ns1.src='https://embed.tawk.to/69c64c2592329d1c3229c7fb/1jkn9itei';\ns1.charset='UTF-8';\ns1.setAttribute('crossorigin','*');\ns0.parentNode.insertBefore(s1,s0);\n})();\n</script><!--End of Tawk.to Script-->  </body>  </html>
+   <script src="main.js"></script>
+   <script src="tawk.js"></script>
+</body>
+</html>
+
 
