@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  document.body.classList.add("is-ready");
   const navbar = document.getElementById("navbar");
   const yearSpan = document.getElementById("year");
   const navToggle = document.querySelector(".nav-toggle");
@@ -96,9 +97,9 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       });
     }
-    
 
-    
+
+
     // Close on escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && desktopNav.classList.contains('mobile-open')) {
@@ -125,172 +126,172 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-const validateField = (field) => {
-  const value = field.value.trim();
-  const form = field.closest('form');
-  let isValid = true;
-  let errorMsg = '';
+  const validateField = (field) => {
+    const value = field.value.trim();
+    const form = field.closest('form');
+    let isValid = true;
+    let errorMsg = '';
 
-  // Skip if no data-required (optional, skip validation)
-  if (!field.hasAttribute('data-required') && value === '') {
-    return true;
-  }
+    // Skip if no data-required (optional, skip validation)
+    if (!field.hasAttribute('data-required') && value === '') {
+      return true;
+    }
 
-  if (field.hasAttribute('data-required') && value === '') {
-    errorMsg = 'This field is required';
-    isValid = false;
-  } else if (field.name === 'fullName' || field.id === 'q-fullName') {
-    if (value.length < 2 || value.length > 50 || !/^[a-zA-Z0-9\s\-\.\']{2,50}$/.test(value)) {
-      errorMsg = 'Name must be 2-50 characters (letters, spaces, -, \', .)';
+    if (field.hasAttribute('data-required') && value === '') {
+      errorMsg = 'This field is required';
       isValid = false;
-    }
-  } else if (field.name === 'email' || field.id === 'q-email') {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(value)) {
-      errorMsg = 'Please enter a valid email address';
-      isValid = false;
-    }
-  } else if (field.name === 'message' || field.id === 'q-message') {
-    if (value.length < 10) {
-      errorMsg = 'Please provide at least 10 characters';
-      isValid = false;
-    }
-  } else if (field.tagName === 'SELECT') {
-    if (value === '') {
-      errorMsg = 'Please select an option';
-      isValid = false;
-    }
-  } else if (field.name === 'phone') {
-    // Optional, always pass
-    isValid = true;
-  }
-
-  setFieldState(field, isValid, errorMsg);
-  return isValid;
-};
-
-const setFieldState = (field, isValid, errorMsg) => {
-  const form = field.closest('form');
-  field.classList.toggle('error', !isValid);
-  field.classList.toggle('valid', isValid);
-  field.setAttribute('aria-invalid', (!isValid).toString());
-  field.title = errorMsg || '';
-
-  // Add error message span if needed
-  let errorSpan = field.parentNode.querySelector('.error-message');
-  if (!isValid && errorMsg && !errorSpan) {
-    errorSpan = document.createElement('span');
-    errorSpan.className = 'error-message';
-    errorSpan.id = `error-${field.id || field.name}`;
-    errorSpan.textContent = errorMsg;
-    field.parentNode.appendChild(errorSpan);
-    field.setAttribute('aria-describedby', errorSpan.id);
-  } else if (isValid && errorSpan) {
-    errorSpan.remove();
-    field.removeAttribute('aria-describedby');
-  } else if (errorSpan) {
-    errorSpan.textContent = errorMsg;
-  }
-
-  // Update live region
-  updateErrors(form);
-};
-
-const updateErrors = (form) => {
-  const errorContainer = form.querySelector('.error-container');
-  const invalidFields = form.querySelectorAll('[aria-invalid="true"]');
-  if (errorContainer) {
-    if (invalidFields.length === 0) {
-      errorContainer.textContent = 'All good!';
-      errorContainer.className = 'error-container valid-container';
-    } else {
-      errorContainer.textContent = `${invalidFields.length} field(s) need attention.`;
-      errorContainer.className = 'error-container';
-    }
-  }
-};
-
-const isFormValid = (form) => {
-  let valid = true;
-  const requiredFields = form.querySelectorAll('[data-required]');
-  requiredFields.forEach(field => {
-    if (!validateField(field)) valid = false;
-  });
-  // Validate all fields for better UX
-  const allFields = form.querySelectorAll('input, select, textarea');
-  allFields.forEach(field => validateField(field));
-  return valid;
-};
-
-const handleFormSubmit = async (event) => {
-  event.preventDefault();
-  const form = event.target;
-
-  if (!isFormValid(form)) {
-    form.classList.add('shake');
-    setTimeout(() => form.classList.remove('shake'), 500);
-    
-    // Focus first invalid field
-    const firstInvalid = form.querySelector('[aria-invalid="true"]');
-    if (firstInvalid) {
-      firstInvalid.focus();
-      firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-    return;
-  }
-
-  // Web3Forms configuration - Free email forwarding service
-  // Get your key at: https://web3forms.com
-  const accessKey = "16874b53-6f89-4579-be42-91d7b8f8dbf5";
-
-  const formData = new FormData(form);
-  formData.append("access_key", accessKey);
-  formData.append("subject", "New Website Contact/Quote Request from " + document.title);
-
-  const submitBtn = form.querySelector('button[type="submit"]');
-  const originalText = submitBtn ? submitBtn.textContent : "Submit";
-  if (submitBtn) {
-    submitBtn.textContent = "Sending...";
-    submitBtn.disabled = true;
-  }
-
-  try {
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      body: formData,
-    });
-
-    const data = await response.json();
-
-    if (data.success) {
-      if (successModal) {
-        successModal.classList.add("visible");
-        successModal.setAttribute("aria-hidden", "false");
+    } else if (field.name === 'fullName' || field.id === 'q-fullName') {
+      if (value.length < 2 || value.length > 50 || !/^[a-zA-Z0-9\s\-\.\']{2,50}$/.test(value)) {
+        errorMsg = 'Please enter your full name';
+        isValid = false;
       }
-      form.reset();
-      // Clear all states
-      form.querySelectorAll('input, select, textarea').forEach(field => {
-        field.classList.remove('error', 'valid');
-        field.removeAttribute('aria-invalid');
-        field.removeAttribute('title');
-        field.removeAttribute('aria-describedby');
-        const errorMsg = field.parentNode.querySelector('.error-message');
-        if (errorMsg) errorMsg.remove();
-      });
-      updateErrors(form);
-    } else {
-      alert("Submission failed: " + (data.message || 'Unknown error'));
+    } else if (field.name === 'email' || field.id === 'q-email') {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(value)) {
+        errorMsg = 'Please enter a valid email address';
+        isValid = false;
+      }
+    } else if (field.name === 'message' || field.id === 'q-message') {
+      if (value.length < 10) {
+        errorMsg = 'Let us know more about your project';
+        isValid = false;
+      }
+    } else if (field.tagName === 'SELECT') {
+      if (value === '') {
+        errorMsg = 'Please select an option';
+        isValid = false;
+      }
+    } else if (field.name === 'phone') {
+      // Optional, always pass
+      isValid = true;
     }
-  } catch (error) {
-    console.error("Form submit error", error);
-    alert("Network error. Please check your connection and try again.");
-  } finally {
+
+    setFieldState(field, isValid, errorMsg);
+    return isValid;
+  };
+
+  const setFieldState = (field, isValid, errorMsg) => {
+    const form = field.closest('form');
+    field.classList.toggle('error', !isValid);
+    field.classList.toggle('valid', isValid);
+    field.setAttribute('aria-invalid', (!isValid).toString());
+    field.title = errorMsg || '';
+
+    // Add error message span if needed
+    let errorSpan = field.parentNode.querySelector('.error-message');
+    if (!isValid && errorMsg && !errorSpan) {
+      errorSpan = document.createElement('span');
+      errorSpan.className = 'error-message';
+      errorSpan.id = `error-${field.id || field.name}`;
+      errorSpan.textContent = errorMsg;
+      field.parentNode.appendChild(errorSpan);
+      field.setAttribute('aria-describedby', errorSpan.id);
+    } else if (isValid && errorSpan) {
+      errorSpan.remove();
+      field.removeAttribute('aria-describedby');
+    } else if (errorSpan) {
+      errorSpan.textContent = errorMsg;
+    }
+
+    // Update live region
+    updateErrors(form);
+  };
+
+  const updateErrors = (form) => {
+    const errorContainer = form.querySelector('.error-container');
+    const invalidFields = form.querySelectorAll('[aria-invalid="true"]');
+    if (errorContainer) {
+      if (invalidFields.length === 0) {
+        errorContainer.textContent = 'All good!';
+        errorContainer.className = 'error-container valid-container';
+      } else {
+        errorContainer.textContent = `${invalidFields.length} field(s) need attention.`;
+        errorContainer.className = 'error-container';
+      }
+    }
+  };
+
+  const isFormValid = (form) => {
+    let valid = true;
+    const requiredFields = form.querySelectorAll('[data-required]');
+    requiredFields.forEach(field => {
+      if (!validateField(field)) valid = false;
+    });
+    // Validate all fields for better UX
+    const allFields = form.querySelectorAll('input, select, textarea');
+    allFields.forEach(field => validateField(field));
+    return valid;
+  };
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    const form = event.target;
+
+    if (!isFormValid(form)) {
+      form.classList.add('shake');
+      setTimeout(() => form.classList.remove('shake'), 500);
+
+      // Focus first invalid field
+      const firstInvalid = form.querySelector('[aria-invalid="true"]');
+      if (firstInvalid) {
+        firstInvalid.focus();
+        firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      return;
+    }
+
+    // Web3Forms configuration - Free email forwarding service
+    // Get your key at: https://web3forms.com
+    const accessKey = "5513c57a-82b0-4801-b531-b641229bd4f4";
+
+    const formData = new FormData(form);
+    formData.append("access_key", accessKey);
+    formData.append("subject", "New Website Contact/Quote Request from " + document.title);
+
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalText = submitBtn ? submitBtn.textContent : "Submit";
     if (submitBtn) {
-      submitBtn.textContent = originalText;
-      submitBtn.disabled = false;
+      submitBtn.textContent = "Sending...";
+      submitBtn.disabled = true;
     }
-  }
-};
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        if (successModal) {
+          successModal.classList.add("visible");
+          successModal.setAttribute("aria-hidden", "false");
+        }
+        form.reset();
+        // Clear all states
+        form.querySelectorAll('input, select, textarea').forEach(field => {
+          field.classList.remove('error', 'valid');
+          field.removeAttribute('aria-invalid');
+          field.removeAttribute('title');
+          field.removeAttribute('aria-describedby');
+          const errorMsg = field.parentNode.querySelector('.error-message');
+          if (errorMsg) errorMsg.remove();
+        });
+        updateErrors(form);
+      } else {
+        alert("Submission failed: " + (data.message || 'Unknown error'));
+      }
+    } catch (error) {
+      console.error("Form submit error", error);
+      alert("Network error. Please check your connection and try again.");
+    } finally {
+      if (submitBtn) {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+      }
+    }
+  };
 
   // Real-time validation for all forms
   const forms = document.querySelectorAll('form[id]');
@@ -305,7 +306,7 @@ const handleFormSubmit = async (event) => {
       errorDiv.setAttribute('role', 'status');
       form.appendChild(errorDiv);
     }
-    
+
     const fields = form.querySelectorAll('input, select, textarea');
     fields.forEach(field => {
       field.addEventListener('blur', () => validateField(field));
@@ -344,7 +345,7 @@ const handleFormSubmit = async (event) => {
   // include project images so they get `.in-view` when scrolled into view
   // include hero image so it fades in when scrolled into view
   const animTargets = document.querySelectorAll(
-".tracking-in-expand-fwd, .animate__zoomIn, .animate__fadeIn, .animate__slideInLeft, .project-image, .hero-image, .testimonial-card"
+    ".tracking-in-expand-fwd, .animate__zoomIn, .animate__fadeIn, .animate__slideInLeft, .project-image, .hero-image, .testimonial-card"
   );
 
   if (animTargets.length) {

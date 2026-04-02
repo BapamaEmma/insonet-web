@@ -2,11 +2,12 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CCTV Surveillance Installation – INSONET Systems</title>
   <link rel="icon" href="images/logo/insonet.png" type="image/png">
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="responsive.css">
 </head>
 
 <body>
@@ -64,114 +65,55 @@
   </header>
 
   <main>
-    <section class="service-hero"
-      style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/works/serv1.jpg') center/cover;">
-      <div class="container hero-content center animate__fadeIn">
-        <p class="eyebrow">Services</p>
-        <h1>CCTV Surveillance</h1>
-        <p class="lead">Intelligent monitoring solutions for commercial and residential security.</p>
+    <section class="service-hero">
+      <div class="service-hero-inner">
+        <div class="container">
+          <div class="hero-content">
+            <p class="eyebrow">Advanced Surveillance for a <span class="eyebrow-highlight">Safer</span> Business
+              Environment</p>
+            <h1 class="service-hero-title tracking-in-expand-fwd">Intelligent CCTV Monitoring That Never Sleeps</h1>
+
+            <div class="hero-subtext animate__fadeIn">
+              <p>Protect your assets with high-definition, AI-powered surveillance systems.</p>
+              <p>We provide end-to-end installation, remote access setup, and smart alert integration.</p>
+              <p>Our solutions ensure 24/7 visibility for commercial, industrial, and residential properties.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="service-hero-bg in-view" style="background-image:url('images/works/serv1.jpg')" aria-hidden="true">
       </div>
     </section>
 
-    <section class="section">
-      <div class="container two-column v-center">
-        <div class="content-block">
-          <header class="section-header left">
-            <h2>Crystal Clear Visibility, 24/7</h2>
-            <p>We design and install high-definition surveillance systems that provide complete coverage and remote
-              access from any device.</p>
-          </header>
-          <ul class="bullet-list">
-            <li><strong>HD & 4K Resolution:</strong> Identify faces and license plates with extreme precision.</li>
-            <li><strong>Remote Monitoring:</strong> View your live feeds and recordings from our mobile app.</li>
-            <li><strong>AI Analytics:</strong> Motion detection, tripwires, and person/vehicle classification.</li>
-            <li><strong>Night Vision:</strong> Full-color imaging even in total darkness.</li>
+    <section class="section" aria-labelledby="devices-heading">
+      <div class="container">
+        <header class="section-header left">
+          <h2 id="devices-heading">Devices & Components We Use</h2>
+          <p class="eyebrow" style="margin-top:8px;">Surveillance Hardware Ecosystem</p>
+        </header>
+        <div class="devices-list">
+          <ul class="device-list">
+            <li><strong>IP Cameras:</strong> Dome, Bullet, Turret, and Panoramic variants (4K/8MP)</li>
+            <li><strong>PTZ Cameras:</strong> Pan-Tilt-Zoom with long-range optical zoom</li>
+            <li><strong>Storage:</strong> Network Video Recorders (NVRs) with RAID support</li>
+            <li><strong>Displays:</strong> Dedicated security monitors and video wall controllers</li>
+            <li><strong>Power:</strong> PoE switches, UPS backups, and centralized power supplies</li>
+            <li><strong>Cabling:</strong> Cat6/Cat7 shielded cabling for interference-free signals</li>
+            <li><strong>Software:</strong> Video Management Software (VMS) with remote viewing client</li>
           </ul>
         </div>
-        <div class="image-placeholder">
-          <img src="images/index/home-hero.jpg" alt="Security cameras and monitoring dashboard."
-            class="section-image animate__zoomIn" />
-        </div>
       </div>
     </section>
 
-    <section class="section section-alt">
-      <div class="container grid-3">
-        <div class="card p-lg">
-          <h3>IP Solutions</h3>
-          <p>Modern network-based cameras for enterprise scalability and high-resolution digital imaging.</p>
-        </div>
-        <div class="card p-lg">
-          <h3>PTZ Cameras</h3>
-          <p>Pan-tilt-zoom capabilities for active monitoring of large open spaces like warehouses or parking lots.</p>
-        </div>
-        <div class="card p-lg">
-          <h3>Cloud Storage</h3>
-          <p>Secure off-site backup for your video data, ensuring recordings are safe even if hardware is stolen.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- preserve quote form from services page -->
-    <section class="quote-form-section" id="quote-form">
-      <div class="container quote-form-inner">
-        <header class="section-header left">
-          <p class="eyebrow">Request Quote</p>
-          <h2>Tell Us About Your Project</h2>
-        </header>
-        <div class="form-card">
-          <form id="quote-request-form">
-            <div class="honeypot-field">
-              <input type="text" name="bot-field" class="honeypot" tabindex="-1" autocomplete="off" />
-            </div>
-            <div class="form-row">
-              <div class="form-field">
-                <label for="q-fullName">Full Name</label>
-                <input type="text" id="q-fullName" name="fullName" data-required="true" placeholder="Enter your name" />
-              </div>
-              <div class="form-field">
-                <label for="q-company">Company</label>
-                <input type="text" id="q-company" name="company" placeholder="Company name" />
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-field">
-                <label for="q-email">Email</label>
-                <input type="email" id="q-email" name="email" data-required="true" placeholder="you@example.com" />
-              </div>
-              <div class="form-field">
-                <label for="q-phone">Phone</label>
-                <input type="tel" id="q-phone" name="phone" placeholder="+233 2628 42 077" />
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-field full-width">
-                <label for="q-message">Project Details</label>
-                <textarea id="q-message" name="message" data-required="true" rows="4"
-                  placeholder="Locations, number of users, existing systems, goals…"></textarea>
-              </div>
-            </div>
-            <div class="form-actions">
-              <button type="submit" class="btn btn-primary">Submit Request</button>
-            </div>
-            <div id="form-errors" class="error-container" aria-live="polite" aria-atomic="true" role="status"></div>
-          </form>
-        </div>
-      </div>
-    </section>
   </main>
 
-  <!-- footer copied from site -->
   <footer class="footer">
     <div class="container footer-grid">
       <div class="footer-column">
         <div class="logo">
           <img src="images/logo/insonet.png" alt="INSONET Systems" class="logo-img" />
         </div>
-        <p>
-          Integrated security and networking solutions for businesses that
-          can’t afford downtime or blind spots.
-        </p>
+        <p>Integrated security and networking solutions for businesses that can’t afford downtime or blind spots.</p>
       </div>
       <div class="footer-column">
         <h3>Quick Links</h3>
@@ -186,31 +128,26 @@
       <div class="footer-column">
         <h3>Services</h3>
         <ul>
-          <li><a href="services.html#cctv">CCTV Surveillance</a></li>
-          <li><a href="services.html#network">Network Infrastructure</a></li>
-          <li><a href="services.html#access">Access Control</a></li>
-          <li><a href="services.html#cyber">Cybersecurity</a></li>
+          <li><a href="cctv.html">CCTV Surveillance</a></li>
+          <li><a href="network.html">Network Infrastructure</a></li>
+          <li><a href="access.html">Access Control</a></li>
+          <li><a href="cyber.html">Cybersecurity</a></li>
         </ul>
       </div>
       <div class="footer-column">
         <h3>Contact</h3>
         <ul>
-          <li>info@insonetsystems.com</li>
+          <li>info@insonetgh.com</li>
           <li>+233 2628 42 077</li>
           <li>Spintex, Accra</li>
         </ul>
         <div class="social-links">
-          <a href="https://wa.me/233262842077" class="social-icon" aria-label="Chat on WhatsApp" title="WhatsApp">
-            <img src="images/socials-icons/Whattapp.png" alt="WhatsApp" />
-          </a>
+          <a href="https://wa.me/233262842077" class="social-icon" aria-label="Chat on WhatsApp" title="WhatsApp"><img
+              src="images/socials-icons/Whattapp.png" alt="WhatsApp" /></a>
           <a href="https://www.facebook.com/Admininso" class="social-icon" aria-label="INSONET Systems on Facebook"
-            title="Facebook">
-            <img src="images/socials-icons/facebook.png" alt="Facebook" />
-          </a>
+            title="Facebook"><img src="images/socials-icons/facebook.png" alt="Facebook" /></a>
           <a href="https://www.instagram.com/insonetgh/" class="social-icon" aria-label="INSONET Systems on Instagram"
-            title="Instagram">
-            <img src="images/socials-icons/instagram.png" alt="Instagram" />
-          </a>
+            title="Instagram"><img src="images/socials-icons/instagram.png" alt="Instagram" /></a>
         </div>
       </div>
     </div>

@@ -86,12 +86,6 @@ ul {
   padding: 0 clamp(16px, 4vw, 24px);
 }
 
-@media (max-width: 480px) {
-  .container {
-    padding: 0 var(--container-mobile-padding);
-  }
-}
-
 .btn {
   display: inline-flex;
   align-items: center;
@@ -145,12 +139,6 @@ ul {
   border-bottom: 1px solid transparent;
 }
 
-@media (max-width: 480px) {
-  .navbar {
-    padding: 0;
-  }
-}
-
 .navbar.scrolled {
   backdrop-filter: blur(14px);
   background: rgba(6, 10, 20, 0.92);
@@ -162,12 +150,6 @@ ul {
   align-items: center;
   justify-content: flex-end;
   gap: 2rem;
-}
-
-@media (max-width: 480px) {
-  .navbar-inner {
-    gap: 0.8rem;
-  }
 }
 
 .mobile-sub-nav,
@@ -287,48 +269,6 @@ ul {
 /* When opened via JS (mobile/click), parent gets .open */
 .nav-item.dropdown.open>.dropdown-menu {
   display: block;
-}
-
-@media (max-width: 768px) {
-  .dropdown-menu {
-    position: static;
-    box-shadow: none;
-    border: none;
-    background: transparent;
-    padding: 0;
-  }
-
-  .dropdown-toggle {
-    width: 100%;
-    text-align: left;
-    color: #ffffff;
-    padding: 12px 0;
-  }
-
-  .dropdown-menu a {
-    padding: 10px 8px;
-    color: #ffffff;
-  }
-
-  /* when mobile nav is open by default keep dropdowns hidden until toggled */
-  .nav-links.mobile-open .dropdown-menu {
-    display: none;
-    padding-left: 1rem;
-    border-left: 1px solid rgba(79, 140, 255, 0.3);
-    margin-top: 0.8rem;
-    margin-bottom: 0.5rem;
-  }
-
-  /* but show it when .open class is added by main.js */
-  .nav-links.mobile-open .nav-item.dropdown.open .dropdown-menu {
-    display: block;
-  }
-
-
-  .nav-links.mobile-open .dropdown-menu a {
-    font-size: 1.05rem;
-    padding: 10px 0;
-  }
 }
 
 .nav-quote {
@@ -499,12 +439,6 @@ main {
 }
 
 /* Respect user's reduced-motion preference */
-@media (prefers-reduced-motion: reduce) {
-  .tracking-in-expand-fwd.in-view {
-    animation: none !important;
-    opacity: 1 !important;
-  }
-}
 
 /* animate.css-like zoomIn effect (slow) for hero paragraph */
 @keyframes zoomIn {
@@ -532,14 +466,6 @@ main {
 
 .animate__zoomIn.in-view {
   animation: zoomIn 2.5s cubic-bezier(.215, .61, .355, 1) both;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .animate__zoomIn.in-view {
-    animation: none !important;
-    opacity: 1 !important;
-    transform: none !important;
-  }
 }
 
 /* Simple fade-in animation for list content */
@@ -597,14 +523,6 @@ main {
   animation: slideInLeft 1600ms cubic-bezier(.2, .7, .2, 1) both;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .animate__slideInLeft.in-view {
-    animation: none !important;
-    opacity: 1 !important;
-    transform: none !important;
-  }
-}
-
 .animate__fadeIn {
   display: block;
   /* start hidden; animation runs when `.in-view` is added */
@@ -615,14 +533,6 @@ main {
 .animate__fadeIn.in-view {
   /* slowed from 2s to 3.5s for a gentler entrance */
   animation: fadeIn 3.5s cubic-bezier(.215, .61, .355, 1) both;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .animate__fadeIn.in-view {
-    animation: none !important;
-    opacity: 1 !important;
-    transform: none !important;
-  }
 }
 
 .section {
@@ -747,22 +657,6 @@ main {
   color: var(--accent);
 }
 
-@media (max-width: 900px) {
-  .services-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .card {
-    flex-direction: column;
-  }
-
-  .card-right {
-    width: 100%;
-    height: 240px;
-  }
-}
-
-
 .two-column {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
@@ -869,14 +763,6 @@ main {
   animation: fadeIn 3.2s ease forwards;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .project-image.in-view {
-    animation: none !important;
-    opacity: 1 !important;
-    transform: none !important;
-  }
-}
-
 .cta {
   background: radial-gradient(circle at top left, rgba(79, 140, 255, 0.32), transparent 55%),
     linear-gradient(150deg, #050814, #050612);
@@ -934,17 +820,9 @@ main {
   animation-play-state: paused;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .cta .btn-primary {
-    animation: none !important;
-  }
-}
-
 .contact-layout {
   align-items: flex-start;
 }
-
-
 
 .form-card {
   padding: 22px 20px 20px;
@@ -1137,18 +1015,6 @@ textarea:focus {
   height: 28px;
   object-fit: contain;
   display: block;
-}
-
-@media (max-width: 768px) {
-  .social-icon {
-    width: 40px;
-    height: 40px;
-  }
-
-  .social-icon img {
-    width: 22px;
-    height: 22px;
-  }
 }
 
 .footer-bottom {
@@ -1350,26 +1216,6 @@ textarea:focus {
   color: #0b2032;
 }
 
-@media (max-width: 900px) {
-  .devices-list {
-    padding: 14px;
-  }
-
-  .device-list li {
-    font-size: 0.92rem;
-  }
-}
-
-@media (max-width: 900px) {
-  .service-detail {
-    grid-template-columns: 1fr;
-  }
-
-  .service-media img {
-    height: 220px;
-  }
-}
-
 /* Service hero: full-bleed background with slow fade-in for selected service */
 .service-hero {
   position: relative;
@@ -1486,61 +1332,77 @@ textarea:focus {
   pointer-events: none;
 }
 
-.service-hero-bg.in-view {
-  animation: fadeIn 2s ease both;
-}
+/* ==========================================================================
+   Modern Entry Animation System (Page Load)
+   ========================================================================== */
 
-@keyframes kenBurnsCyber {
+/* The 'is-ready' class is added to the body via JS on DOMContentLoaded to trigger 
+   the staggered entry of hero elements and the navbar. */
+
+@keyframes fadeUpReveal {
   0% {
-    transform: scale(1.02) translateY(0);
-  }
-  50% {
-    transform: scale(1.08) translateY(-1.5%);
+    opacity: 0;
+    transform: translateY(30px);
   }
   100% {
-    transform: scale(1.02) translateY(0);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
+@keyframes navEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes kenBurnsZoom {
+  0% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Staggered Delay Utilities */
+.stagger-1 { animation-delay: 0.2s !important; }
+.stagger-2 { animation-delay: 0.4s !important; }
+.stagger-3 { animation-delay: 0.6s !important; }
+.stagger-4 { animation-delay: 0.8s !important; }
+
+/* Apply entrance animations when page is ready */
+
+body.is-ready .navbar {
+  animation: navEntrance 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Make the hero-content wrapper visible immediately when page is ready */
+body.is-ready .hero-content,
+body.is-ready .page-header-inner {
+  opacity: 1;
+}
+
+body.is-ready .hero-content > *,
+body.is-ready .page-header-inner > *,
+body.is-ready .service-hero .container > * {
+  opacity: 0;
+  animation: fadeUpReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+body.is-ready .service-hero-bg.in-view {
+  animation: fadeIn 1.5s ease both, kenBurnsZoom 6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Backwards compatibility and existing animations */
 .hero-content {
-  animation: fadeIn 1.2s ease both 0.3s;
-}
-
-@keyframes slideUpGlow {
-  0% {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.hero-subtext p.stagger-1 { animation-delay: 1s; }
-.hero-subtext p.stagger-2 { animation-delay: 1.3s; }
-.hero-subtext p.stagger-3 { animation-delay: 1.6s; }
-
-@keyframes fadeUpStagger {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate__fadeIn.in-view {
-  animation: fadeUpStagger 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-}
-
-.hero-particles {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
+  /* starts hidden; body.is-ready sets opacity:1 on the wrapper */
+  opacity: 0;
 }
 
 .particle {
@@ -1562,25 +1424,6 @@ textarea:focus {
 
 .selected-service .service-media img {
   height: 420px;
-}
-
-@media (max-width: 900px) {
-  .selected-service-inner {
-    grid-template-columns: 1fr;
-  }
-
-  .selected-service .service-media img {
-    height: 260px;
-  }
-
-  .testimonials-grid {
-    grid-template-columns: minmax(0, 1fr);
-    padding: 1.5rem 1rem;
-  }
-
-  .testimonial-card {
-    padding: 2rem 1.5rem 1.5rem;
-  }
 }
 
 .feature-card {
@@ -1721,66 +1564,6 @@ textarea:focus {
   height: 100%;
   object-fit: cover;
   border-radius: inherit;
-}
-
-@media (max-width: 992px) {
-
-  .hero-grid,
-  .two-column,
-  .services-columns,
-  .projects-grid,
-  .feature-grid,
-  .projects-page-grid {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .footer-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px 20px;
-  }
-
-  .footer-column:first-child {
-    grid-column: 1 / -1;
-  }
-
-  .project-card img.project-image {
-    height: 300px;
-  }
-
-  .hero-media {
-    order: -1;
-    justify-content: center;
-  }
-
-  .hero {
-    padding-top: calc(var(--nav-height) + 20px);
-  }
-
-  .services-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .footer-grid {
-    gap: 20px;
-  }
-
-  .footer-column:first-child {
-    max-width: none;
-  }
-
-  .filter-row {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .section-header.left {
-    text-align: center;
-  }
-
-  .content-block {
-    margin: 0 auto;
-    text-align: center;
-  }
 }
 
 @media (max-width: 768px) {
@@ -2053,7 +1836,6 @@ textarea:focus {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-
   .nav-links.mobile-open > a:not(.nav-quote),
   .nav-links.mobile-open > .nav-item {
     font-size: 1.25rem;
@@ -2147,74 +1929,6 @@ textarea:focus {
 
   .page-header {
     padding-top: calc(var(--nav-height) + 20px);
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
-    padding: var(--container-mobile-padding) 0;
-  }
-
-  .hero {
-    padding-bottom: clamp(48px, 10vw, 72px);
-  }
-
-  .hero-grid {
-    gap: clamp(20px, 5vw, 24px);
-  }
-
-  .hero-content h1 {
-    font-size: clamp(1.6rem, 8vw, 2rem);
-  }
-
-  .hero-actions {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 12px;
-  }
-
-  .form-actions {
-    justify-content: center;
-  }
-
-  .form-actions .btn {
-    width: 100%;
-  }
-
-  .projects-page-grid {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .feature-grid {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .projects-grid {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  /* Reduce heading sizes slightly for small mobile screens to prevent overflow */
-  .section-header h2 {
-    font-size: clamp(1.4rem, 6vw, 1.6rem);
-  }
-
-  .service-hero-title {
-    font-size: clamp(1.8rem, 8vw, 2rem);
-  }
-
-  .logo-img {
-    height: clamp(160px, 30vw, 240px); /* Massive, high-impact brand presence */
-    transform: translateY(12px); /* Pushed up for better balance */
-    width: auto;
-    margin-bottom: 0;
-    max-width: 90vw; 
-    object-fit: contain;
-    z-index: 120;
-  }
-
-  .footer-grid {
-    gap: 20px;
-    font-size: 0.85rem;
   }
 }
 
@@ -2542,64 +2256,6 @@ textarea:focus {
 }
 
 /* Responsive */
-@media (max-width: 900px) {
-  .testimonials-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    padding: 1.5rem;
-  }
-
-  .testimonial-card {
-    padding: 2rem 1.5rem 1.5rem;
-  }
-
-  .slider-nav {
-    bottom: -40px;
-  }
-
-  .slider-btn {
-    width: 42px;
-    height: 42px;
-    font-size: 1.2rem;
-  }
-
-  .quote-panel {
-    padding: 2rem 1.5rem;
-    margin: 0 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .testimonials-section {
-    padding: 60px 0;
-  }
-
-  .section-title {
-    font-size: 1.8rem;
-  }
-
-  .section-subtitle {
-    font-size: 1rem;
-  }
-
-  .testimonial-card {
-    padding: 1.8rem 1.2rem 1.2rem;
-  }
-
-  .testimonial-text {
-    font-size: 1rem;
-  }
-
-  .author-avatar {
-    width: 48px;
-    height: 48px;
-    font-size: 1.1rem;
-  }
-
-  .slider-nav {
-    gap: 0.8rem;
-  }
-}
 
 /* Animation for cards entering view */
 .testimonial-card.in-view {
