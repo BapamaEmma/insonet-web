@@ -30,11 +30,11 @@ document.addEventListener("DOMContentLoaded", () => {
       desktopNav && desktopNav.classList.contains("mobile-open");
     if (!isMenuOpen) {
       if (currentScrollY > lastScrollY && currentScrollY > 50) {
-        // Scrolling down past 50px: show
-        navbar.classList.remove("nav-hidden");
-      } else if (currentScrollY < lastScrollY && currentScrollY > 50) {
-        // Scrolling up: hide
+        // Scrolling down past 50px: hide
         navbar.classList.add("nav-hidden");
+      } else if (currentScrollY < lastScrollY && currentScrollY > 50) {
+        // Scrolling up: show
+        navbar.classList.remove("nav-hidden");
       } else if (currentScrollY <= 50) {
         // Always show when at the very top
         navbar.classList.remove("nav-hidden");
