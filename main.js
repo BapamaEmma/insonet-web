@@ -95,6 +95,34 @@ document.addEventListener("DOMContentLoaded", () => {
         closeMenu();
       }
     });
+
+    // Mobile: tap a nav link → close the sidebar and navigate
+    desktopNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (desktopNav.classList.contains('mobile-open')) {
+          closeMenu();
+        }
+      });
+    });
+
+    // Mobile: Services dropdown toggle (tap to expand/collapse)
+    desktopNav.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+      toggle.addEventListener('click', (e) => {
+        if (!desktopNav.classList.contains('mobile-open')) return;
+        e.preventDefault();
+        const item = toggle.closest('.nav-item.dropdown');
+        const isOpen = item.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', String(isOpen));
+        // Close other open dropdowns
+        desktopNav.querySelectorAll('.nav-item.dropdown.open').forEach(other => {
+          if (other !== item) {
+            other.classList.remove('open');
+            const otherToggle = other.querySelector('.dropdown-toggle');
+            if (otherToggle) otherToggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+    });
   }
 
   if (successModal) {
