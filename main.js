@@ -96,6 +96,13 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
+    // Close menu when viewport resizes to desktop width (prevents stuck state)
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768 && desktopNav.classList.contains('mobile-open')) {
+        closeMenu();
+      }
+    });
+
     // Mobile: tap a nav link → close the sidebar and navigate
     desktopNav.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
