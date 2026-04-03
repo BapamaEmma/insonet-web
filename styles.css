@@ -133,12 +133,14 @@ ul {
 
 .navbar {
   /* Navigation bar: sticky top header with subtle gradient/backdrop */
+  /* NOTE: z-index intentionally omitted — adding it creates a stacking context
+     that traps position:fixed children (the mobile sidebar). Without z-index,
+     position:sticky still paints above normal in-flow content. */
   position: sticky;
   top: 0;
   left: 0;
   right: 0;
   height: var(--nav-height);
-  z-index: 100;
   display: flex;
   align-items: center;
   transition: background-color 0.2s ease, box-shadow 0.2s ease,
@@ -208,25 +210,10 @@ ul {
 }
 
 .nav-links {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: var(--nav-height);
-  max-width: var(--container-width);
-  margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
   gap: 1.8rem;
   font-size: 1.05rem;
-  padding: 0 clamp(16px, 4vw, 24px);
-  z-index: 101;
-  pointer-events: none;
-}
-
-.nav-links > * {
-  pointer-events: auto;
 }
 
 .nav-links a {
